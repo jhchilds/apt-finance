@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+     <meta name = "viewport" content = "width=device-width, initial-scale=1.0">
+     <meta name="author" content="Joshua Childs">
+     <meta name="description" content="Financial documentation program for broke college kids." >
+     <meta http-equiv = "X-UA-Compatible" content = "IE=edge">
+     <meta charset="utf-8">
+     <meta name="author" content="Joshua Childs">
+     <link href="css/table.css" type="text/css" rel="stylesheet" />
+     <link rel="stylesheet" href="css/custom.css" >
+     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+     <title>28 South Willard</title>
+  </head>
+<body id="table">

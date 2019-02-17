@@ -1,0 +1,28 @@
+
+@import url('https://fonts.googleapis.com/css?family=Cabin+Sketch|Istok+Web|Lalezar|Lato|Noto+Serif+KR|Poppins|Scada|Ubuntu');
+
+/******Navigation******/
+nav{
+  background-color: #f3f3f3;
+  color: #222;
+}
+.navbar-brand{
+  font-family:'Lalezar';
+  font-size: 30px;
+  color: grey !important;
+}
+
+.nav-link{
+  font-size: 17px;
+  margin: 15px;
+  color: #222 !important;
+  font-family: 'Lato';
+}
+
+.nav-link:hover{
+  color:grey !important;
+  text-decoration: none;
+}
+
+
+
