@@ -1,0 +1,197 @@
+/*
+    Created on : Feb 15, 2019, 3:35:38 PM
+    Author     : joshuachilds
+    CSS Styling for Table
+*/
+@import url('https://fonts.googleapis.com/css?family=Lato|Roboto|Rokkitt');
+
+
+html{
+    background: #181818;
+    font-family: 'Rokkitt', helvetica, arial, sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+
+    color: #222;
+
+  }
+
+header{
+  color: #f3f3f3;
+}
+
+/*--------Table Styling-------  */
+
+#table{
+  overflow-x: auto;
+}
+#table{
+  /* max-width: 950px; */
+  margin: 10px auto;
+  padding: 2em;
+}
+
+#table caption{
+  font-weight: bold;
+  font-size: 25px;
+  text-transform: capitalize;
+  color: #f3f3f3;
+  padding: 1em;
+}
+
+
+#table table {
+  font-family: "Roboto", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+  background: #f3f3f3;
+  padding: 2em;
+  display: table;
+}
+
+#table td, #table th {
+  border: 1px solid black;
+  padding: 8px;
+}
+
+#table caption{
+  text-align: center;
+}
+
+#table tr:nth-child(2n+1){
+  background-color: #D6F0E0;
+}
+/*Different hovers for odd and even elements   */
+#table tr:nth-child(odd):hover{
+background-color: #F9FE01;
+}
+
+#table tr:nth-child(even):hover{
+background-color: #F9FE01;
+}
+
+#table a{
+  color: black;
+  text-decoration: none;
+}
+
+#table a:active{
+  color: red;
+
+}
+
+/* ------TABLE HEADER adapted from https://css-tricks.com/complete-guide-table-element/------ */
+#table th {
+    background: url(https://jackrugile.com/images/misc/noise-diagonal.png), linear-gradient(#1155, #1155);
+    border-left: 1px solid #555;
+    border-right: 1px solid #777;
+    border-top: 1px solid #555;
+    border-bottom: 1px solid #333;
+    box-shadow: inset 0 1px 0 #999;
+    color: #222;
+    text-transform: uppercase;
+    font-weight: bold;
+    padding: 10px 15px;
+    position: relative;
+    text-shadow: 0 1px 0 #000;
+}
+
+#table th:after {
+    background: linear-gradient(rgba(255,255,255,0), rgba(255,255,255,.08));
+    content: '';
+    display: block;
+    height: 25%;
+    left: 0;
+    margin: 1px 0 0 0;
+    position: absolute;
+    top: 25%;
+    width: 100%;
+}
+
+#table th:first-child {
+    border-left: 1px solid #777;
+    box-shadow: inset 1px 1px 0 #999;
+}
+#table th:last-child {
+    /* box-shadow: inset -1px 1px 0 #999; */
+}
+#table tbody:hover td {
+    color: transparent;
+    text-shadow: 0 0 3px #aaa;
+    transition: 1s ease-out;
+}
+#table tbody:hover tr:hover td {
+    color: #444;
+    text-shadow: 0 1px 0 #fff;
+    transition: .5s ease-out;
+}
+#table tbody td {
+    color: transparent;
+    text-shadow: 0 0 3px #aaa;
+    transition: 1s ease-out;
+}
+#table tbody tr td {
+    color: #444;
+    text-shadow: 0 1px 0 #fff;
+    transition: 1s ease-out;
+}
+
+
+
+
+
+
+@media only screen and (max-width: 650px){
+
+  #table  th{
+    /* text-align: left; */
+    display:none;
+  }
+
+  #table caption{
+    display: none;
+  }
+
+  #table td{
+    display:block;
+  }
+
+
+  #table tr{
+    text-align: center;
+  }
+
+  #table td:first-child{
+    background: url(https://jackrugile.com/images/misc/noise-diagonal.png), linear-gradient(#1155, #1155);
+    border-left: 1px solid #555;
+    border-right: 1px solid #777;
+    border-top: 1px solid #555;
+    border-bottom: 1px solid #333;
+    box-shadow: inset 0 1px 0 #999;
+    color: #222;
+    text-transform: uppercase;
+    font-weight: bold;
+    padding: 10px 15px;
+    position: relative;
+    text-shadow: 0 1px 0 #000;
+  }
+
+  #table td:last-child{
+    border-bottom: 4px solid #222;
+  }
+
+}
+
+
+@media only screen and (max-width: 252px){
+  #table table{
+    display:none;
+  }
+  #table::before{
+    color: red;
+    content: "WINDOW WIDTH TOO SMALL";
+    text-align: center;
+
+  }
+
+}
