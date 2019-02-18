@@ -293,7 +293,7 @@ if (isset($_POST["btnSubmit"])) {
 
         foreach ($_POST as $htmlName => $value) {
 
-            $message .= '<p>';
+            $message .= '<h2>';
             // breaks up form
             //
             $camelCase = preg_split('/(?=[A-Z])/', substr($htmlName, 3));
@@ -303,11 +303,11 @@ if (isset($_POST["btnSubmit"])) {
             }
 
             if (is_numeric($value)){
-              $message .= ' = $' . htmlentities(number_format($value,2), ENT_QUOTES, "UTF-8") . '</p>';
+              $message .= ' = $' . htmlentities(number_format($value,2), ENT_QUOTES, "UTF-8") . '</h2>';
             }
 
             else{
-              $message .= ' = ' . htmlentities($value, ENT_QUOTES, "UTF-8") . '</p>';
+              $message .= ' = ' . htmlentities($value, ENT_QUOTES, "UTF-8") . '</h2>';
             }
 
         // mailing information
@@ -559,10 +559,10 @@ if (isset($_POST["btnSubmit"])) {
                             name="lstStatus"
                             tabindex="520" >
                         <option <?php if ($payStatus == "Not Paid") print " selected "; ?>
-                            value="Class">Not Paid</option>
+                            value="Not Paid">Not Paid</option>
 
                         <option <?php if ($payStatus == "Paid") print " selected "; ?>
-                            value="Friend told me">Paid</option>
+                            value="Paid">Paid</option>
 
                     </select>
 
