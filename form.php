@@ -99,8 +99,14 @@ $thisURL = $domain . $phpSelf;
 // Initialize variables one for each form element
 // In order they appear on the form
 $firstName = "";
-
-$email = "jhchilds@uvm.edu";
+$lastName = "";
+$email = "";
+$subscribe = "Subscribe";
+$listen = true;
+$work = false;
+$learn = false;
+$reason = "Class";
+$comments = '';
 
 //%^%^%^%^%^%^%^%^%^%^%^%^%^%^^%^%^%^
 //
