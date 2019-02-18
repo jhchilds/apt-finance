@@ -208,9 +208,9 @@ if (isset($_POST["btnSubmit"])) {
     $to = $email; // the person who filled out the form
         $cc = '';
         $bcc = '';
-        $from = 'Burlington Viewshed <jhchilds@uvm.edu>';
+        $from = 'Childs Finance <jhchilds@uvm.edu>';
         // subject of mail should make sense to your form
-        $subject = 'You Registered for Information About Access to the trailheads in the Burlington Viewshed ';
+        $subject = 'Rent/Water/Rubbish/Electric: ' . date("d/m/Y");
 
         $mailed = sendMail($to, $cc, $bcc, $from, $subject, $message);
     } // end form is valid
@@ -242,7 +242,7 @@ if (isset($_POST["btnSubmit"])) {
         print $message;
     } else {
 
-        print '<h2>Please Register With Us</h2>';
+        print '<h2>Send Finance Data</h2>';
         print '<p class="heading"> Fill out this form to get put on our email list.</p>';
 
         //#########################
@@ -284,7 +284,7 @@ if (isset($_POST["btnSubmit"])) {
               method="post">
 
             <fieldset class="text">
-                <legend>Contact Information</legend>
+                <legend>Tenant Email</legend>
 
 
 
@@ -324,7 +324,89 @@ if (isset($_POST["btnSubmit"])) {
             </fieldset> <!-- ends radio & buttons -->
 
 
-            <fieldset class="radio">
+
+            <fieldset class="text">
+                <legend>Total Due</legend>
+                <p>
+                    <label class="required text-field" for="txtRent">Rent</label>
+                    <input
+                        id="txtRent"
+                        maxlength="45"
+                        name="txtRent"
+                        onfocus="this.select()"
+                        placeholder="rent amount"
+                        tabindex="120"
+                        type="text"
+                        value="$2000.00"
+                        >
+                </p>
+
+
+                <p>
+                    <label class="required text-field" for="txtRubbish">Rubbish</label>
+                    <input
+                        id="txtRubbish"
+                        maxlength="45"
+                        name="txtRubbish"
+                        onfocus="this.select()"
+                        placeholder="rubbish amount"
+                        tabindex="120"
+                        type="text"
+                        value="$24.00"
+                        >
+                </p>
+
+
+                <p>
+                    <label class="required text-field" for="txtWater">Water</label>
+                    <input
+                        id="txtWater"
+                        maxlength="45"
+                        name="txtWater"
+                        onfocus="this.select()"
+                        placeholder="water amount"
+                        tabindex="120"
+                        type="text"
+                        value="$0.00"
+                        >
+                </p>
+
+
+                <p>
+                    <label class="required text-field" for="txtElectric">Electric</label>
+                    <input
+                        id="txtElectric"
+                        maxlength="45"
+                        name="txtElectric"
+                        onfocus="this.select()"
+                        placeholder="electric amount"
+                        tabindex="120"
+                        type="text"
+                        value="$0.00"
+                        >
+                </p>
+
+                <p>
+                    <label class="required text-field" for="txtOwed">Amount Owed</label>
+                    <input
+                        id="txtOwed"
+                        maxlength="45"
+                        name="txtOwed"
+                        onfocus="this.select()"
+                        placeholder="owed amount"
+                        tabindex="120"
+                        type="text"
+                        value="$0.00"
+                        >
+                </p>
+
+            </fieldset> <!-- ends radio & buttons -->
+
+
+
+
+
+            <!-- <fieldset class="radio">
                 <legend>Age</legend>
                 <p>
                   <label class="radio-field">
@@ -346,51 +428,11 @@ if (isset($_POST["btnSubmit"])) {
                     <input type="radio" name="age" value="21 OR Older" > 21 or Older
                   </label>
                 </p>
-            </fieldset>
-
-            <!-- <fieldset class="checkbox">
-                <legend>Favorite Bob Quotes</legend>
-                <p>
-                  <label class="check-field">
-                    <input
-                        name ="bob"
-                        value="Be Cool"
-                        type="checkbox"
-                        > Be Cool </label>
-                </p>
-
-                <p>
-                <label class="check-field">
-                    <input
-                        name ="bob"
-                        value="Google It"
-                        type="checkbox"
-                        > Google It</label>
-                </p>
-                <p>
-
-               <label class="check-field">
-                    <input
-                        name ="bob"
-                        value="Email Me"
-                        type="checkbox"
-                        > Email Me</label>
-
-              </p>
-              <p>
-              <label class="check-field">
-                    <input
-                        name ="bob"
-                        value="Groovy"
-                        type="checkbox"
-                        > Groovy </label>
-                </p>
             </fieldset> -->
 
 
 
-
-            <fieldset class="textarea">
+            <!-- <fieldset class="textarea">
                 <legend>Feedback</legend>
 
                 <p>
@@ -399,19 +441,18 @@ if (isset($_POST["btnSubmit"])) {
                               tabindex="602" onfocus="this.select()"></textarea>
                 </p>
 
-            </fieldset>
+            </fieldset> -->
 
 
 
 
             <fieldset  class="listbox ">
-                <legend>What is your favorite dining hall at UVM?(Optional)</legend>
+                <legend>Pay Status</legend>
                 <p>
 
                     <select tabindex="592" size="1">
-                        <option value="Harris Millis" >Harris Millis</option>
-                        <option value="Simpson" >Simpson</option>
-                        <option value="Central"  selected="selected" >Central</option>
+                        <option value="Paid" >Paid</option>
+                        <option value="Not Paid" >Not Paid</option>
                     </select>
                 </p>
 

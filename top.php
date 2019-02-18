@@ -31,5 +31,7 @@
 
   // print '<body id="' . $path_parts['filename'] . '">';
 
+
 ?>
+<body id="table">
 
