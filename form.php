@@ -136,11 +136,11 @@ if (isset($_POST["btnSubmit"])) {
         $firstName = htmlentities($_POST["txtFirstName"], ENT_QUOTES, "UTF-8");
         $lastName = htmlentities($_POST["txtLastName"], ENT_QUOTES, "UTF-8");
         $email = filter_var($_POST["txtEmail"], FILTER_SANITIZE_EMAIL);
-        $rent = filter_var($_POST["txtRent"], ENT_QUOTES, "UTF-8");
-        $water = filter_var($_POST["txtWater"], ENT_QUOTES, "UTF-8");
-        $rubbish = filter_var($_POST["txtRubbish"], ENT_QUOTES, "UTF-8");
-        $electric = filter_var($_POST["txtElectric"], ENT_QUOTES, "UTF-8");
-        $amount = filter_var($_POST["txtAmount"], ENT_QUOTES, "UTF-8");
+        $rent = htmlentities($_POST["txtRent"], ENT_QUOTES, "UTF-8");
+        $water = htmlentities($_POST["txtWater"], ENT_QUOTES, "UTF-8");
+        $rubbish = htmlentities($_POST["txtRubbish"], ENT_QUOTES, "UTF-8");
+        $electric = htmlentities($_POST["txtElectric"], ENT_QUOTES, "UTF-8");
+        $amount = htmlentities($_POST["txtAmount"], ENT_QUOTES, "UTF-8");
 
 
         $occupation = htmlentities($_POST["radOccupation"], ENT_QUOTES, "UTF-8");
