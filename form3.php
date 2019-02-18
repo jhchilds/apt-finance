@@ -19,7 +19,7 @@ $path_parts = pathinfo($phpSelf);
     </head>
 
 <?php
-$debug = true;
+$debug = false;
 
 
 $domain = '//';
@@ -85,6 +85,13 @@ if ($debug) {
 $firstName = "";
 $lastName = "";
 $email = "";
+
+$rent = "";
+$water = "";
+$rubbish = "";
+$electric = "";
+$amount = "";
+
 $subscribe = "Subscribe";
 $listen = true;
 $work = false;
@@ -96,6 +103,15 @@ $comments = '';
 $firstNameERROR = false;
 $lastNameERROR = false;
 $emailERROR = false;
+
+$rentERROR = false;
+$waterERROR = false;
+$rubbishERROR = false;
+$electricERROR = false;
+$amountERROR = false;
+
+
+
 $subscribeERROR = false;
 $wantERROR = false;
 $totalChecked = 0;
@@ -120,6 +136,13 @@ if (isset($_POST["btnSubmit"])) {
         $firstName = htmlentities($_POST["txtFirstName"], ENT_QUOTES, "UTF-8");
         $lastName = htmlentities($_POST["txtLastName"], ENT_QUOTES, "UTF-8");
         $email = filter_var($_POST["txtEmail"], FILTER_SANITIZE_EMAIL);
+        $rent = filter_var($_POST["txtRent"], ENT_QUOTES, "UTF-8");
+        $water = filter_var($_POST["txtWater"], ENT_QUOTES, "UTF-8");
+        $rubbish = filter_var($_POST["txtRubbish"], ENT_QUOTES, "UTF-8");
+        $electric = filter_var($_POST["txtElectric"], ENT_QUOTES, "UTF-8");
+        $amount = filter_var($_POST["txtAmount"], ENT_QUOTES, "UTF-8");
+
+
         $occupation = htmlentities($_POST["radOccupation"], ENT_QUOTES, "UTF-8");
         if (isset($_POST["chkListen"])) {
             $learn = true;
@@ -166,6 +189,43 @@ if (isset($_POST["btnSubmit"])) {
         $emailERROR = true;
     }
 
+    if ($rent == "") {
+        $errorMsg[] = 'Please enter rent bill';
+        $rentERROR = true;
+    } elseif (!verifyAlphaNum($rent)) {
+        $errorMsg[] = "Rent appears to have extra characters.";
+        $rentERROR = true;
+    }
+
+    if ($water == "") {
+        $errorMsg[] = 'Please enter water bill';
+        $waterERROR = true;
+    } elseif (!verifyAlphaNum($water)) {
+        $errorMsg[] = "Water appears to have extra characters.";
+        $waterERROR = true;
+    }
+
+    if ($rubbish == "") {
+        $errorMsg[] = 'Please enter rubbish bill';
+        $rubbishERROR = true;
+    } elseif (!verifyAlphaNum($rubbish)) {
+        $errorMsg[] = "Rubbish appears to have extra characters.";
+        $rubbishERROR = true;
+    }
+
+    if ($electric == "") {
+        $errorMsg[] = 'Please enter electric bill';
+        $electricERROR = true;
+    } elseif (!verifyAlphaNum($rent)) {
+        $errorMsg[] = "Electric appears to have extra characters.";
+        $electricERROR = true;
+    }
+
+
+
+
+
+
     if ($subscribe != "Subscribe" AND $subscribe != "Only Major Events" AND $occupation != "This One Only") {
         $errorMsg[] = "Please choose an option for receiving emails";
         $subscribeERROR = true;
@@ -199,6 +259,16 @@ if (isset($_POST["btnSubmit"])) {
     $dataRecord[] = $firstName;
     $dataRecord[] = $lastName;
     $dataRecord[] = $email;
+
+    $dataRecord[] = $rent;
+    $dataRecord[] = $water;
+    $dataRecord[] = $rubbish;
+    $dataRecord[] = $electric;
+    $dataRecord[] = $amount;
+
+
+
+
     $dataRecord[] = $subscribe;
     $dataRecord[] = $listen;
     $dataRecord[] = $work;
@@ -206,7 +276,7 @@ if (isset($_POST["btnSubmit"])) {
     $dataRecord[] = $reason;
     $dataRecord[] = $comments;
     // setup csv file
-    $filename = 'data/subscribe.csv';
+    $filename = 'data/registration.csv';
     // open file to add date
     $file = fopen($filename, 'a');
     // write info
@@ -233,10 +303,10 @@ if (isset($_POST["btnSubmit"])) {
         $cc = '';
         $bcc = '';
 
-        $from = 'What I Hear <connor.m.hamilton@uvm.edu>';
+        $from = 'Childs Finance <jhchilds@uvm.edu>';
 
         // subject of mail
-        $subject = 'Thanks for Contacting Me!';
+        $subject = 'Rent/Electric' . date("m/d/Y");
         $mailed = sendMail($to, $cc, $bcc, $from, $subject, $message);
     } // end if form is valid
 } // ends if form submitted
@@ -272,12 +342,12 @@ if (isset($_POST["btnSubmit"])) {
 
     ?>
       <form action = "<?php print $phpSelf; ?>"
-            id = "contactMe"
+            id = "frmRegister"
             method = "post">
-                <fieldset class = "contact">
-                    <legend>Contact Information</legend>
+                <fieldset class = "text">
+                    <legend>Tenant Email</legend>
                     <p>
-                        <label class="required" for="txtFirstName">First Name</label>
+                        <label class="required text-field" for="txtFirstName">First Name</label>
                         <input autofocus
                                <?php if ($firstNameERROR) print 'class="mistake"'; ?>
                                id="txtFirstName"
@@ -292,7 +362,7 @@ if (isset($_POST["btnSubmit"])) {
                     </p>
 
                     <p>
-                        <label class="required" for="txtLastName">Last Name</label>
+                        <label class="required text-field" for="txtLastName">Last Name</label>
                         <input
                                <?php if ($lastNameERROR) print 'class="mistake"'; ?>
                                id="txtLastName"
@@ -307,7 +377,7 @@ if (isset($_POST["btnSubmit"])) {
                     </p>
 
                     <p>
-                        <label class ="required" for ="txtEmail">Email</label>
+                        <label class ="required text-field" for ="txtEmail">Email</label>
                             <input
                                 <?php if ($emailERROR) print 'class="mistake"'; ?>
                                 id = "txtEmail"
@@ -321,6 +391,101 @@ if (isset($_POST["btnSubmit"])) {
                             >
                     </p>
                 </fieldset> <!-- ends contact -->
+
+
+
+
+                <fieldset class = "text">
+                    <legend>Bills Due</legend>
+                    <p>
+                        <label class="required text-field" for="txtRent">Rent</label>
+                        <input autofocus
+                               <?php if ($rentERROR) print 'class="mistake"'; ?>
+                               id="txtRent"
+                               maxlength="45"
+                               name="txtRent"
+                               onfocus="this.select()"
+                               placeholder="Enter rent bill"
+                               tabindex="100"
+                               type="text"
+                               value="<?php print $rent; ?>"
+                        >
+                    </p>
+
+
+                    <p>
+                        <label class="required text-field" for="txtWater">Water</label>
+                        <input
+                               <?php if ($waterERROR) print 'class="mistake"'; ?>
+                               id="txtWater"
+                               maxlength="45"
+                               name="txtWater"
+                               onfocus="this.select()"
+                               placeholder="Enter water bill"
+                               tabindex="100"
+                               type="text"
+                               value="<?php print $water; ?>"
+                        >
+                    </p>
+
+                    <p>
+                        <label class="required text-field" for="txtLastName">Rubbish</label>
+                        <input
+                               <?php if ($rubbishERROR) print 'class="mistake"'; ?>
+                               id="txtRubbish"
+                               maxlength="45"
+                               name="txtRubbish"
+                               onfocus="this.select()"
+                               placeholder="Enter rubbish bill"
+                               tabindex="100"
+                               type="text"
+                               value="<?php print $rubbish; ?>"
+                        >
+                    </p>
+
+                    <p>
+                        <label class ="required text-field" for ="txtElectric">Electric</label>
+                            <input
+                                <?php if ($electricERROR) print 'class="mistake"'; ?>
+                                id = "txtElectric"
+                                maxlength= "45"
+                                name = "txtElectric"
+                                onfocus = "this.select()"
+                                placeholder= "Enter electric bill"
+                                tabindex = "120"
+                                type = "text"
+                                value = "<?php print $electric; ?>"
+                            >
+                    </p>
+
+
+                    <p>
+                        <label class ="required text-field" for ="txtAmount">Amount</label>
+                            <input
+                                <?php if ($amountERROR) print 'class="mistake"'; ?>
+                                id = "txtAmount"
+                                maxlength= "45"
+                                name = "txtAmount"
+                                onfocus = "this.select()"
+                                placeholder= "Enter total amount"
+                                tabindex = "120"
+                                type = "text"
+                                value = "<?php print $amount; ?>"
+                            >
+                    </p>
+
+
+
+                </fieldset> <!-- ends contact -->
+
+
+
+
+
+
+
+
+
 
 <!--                ================= radio buttons =================-->
                 <fieldset class = "radio <?php if ($subscribeERROR) print ' mistake'; ?>">
@@ -421,6 +586,6 @@ if (isset($_POST["btnSubmit"])) {
     ?>
     </article>
 
-
-<?php include 'footer.php'; ?>
+  </body>
+  </html>
 
