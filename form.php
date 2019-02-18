@@ -239,8 +239,10 @@ if (isset($_POST["btnSubmit"])) {
         // person filling out the form (section 2g).
 
 
-        $message = '<p>Data Entered:</p>';
+        $message = '<h2>Below are the specific amounts for this months payments.</h2>';
         foreach ($_POST as $htmlName => $value) {
+
+
 
             $camelCase = preg_split('/(?=[A-Z])/', substr($htmlName, 1));
 
