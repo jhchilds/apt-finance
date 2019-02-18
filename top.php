@@ -22,11 +22,11 @@
   print PHP_EOL . '<!-- include libraries -->' . PHP_EOL;
   require_once('lib/security.php');
   // Path Parts
-  if ($path_parts['filename'] == "form") {
+  // if ($path_parts['filename'] == "form") {
       print PHP_EOL . '<!-- include form libraries -->' . PHP_EOL;
       include 'lib/validation-functions.php';
       include 'lib/mail-message.php';
-  }
+  // }
   print PHP_EOL . '<!-- finished including libraries -->' . PHP_EOL;
 
   // print '<body id="' . $path_parts['filename'] . '">';
