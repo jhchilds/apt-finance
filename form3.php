@@ -70,7 +70,15 @@ if ($debug) {
 
 
 
-<?php
+
+
+
+
+
+
+
+
+
 <?php
 // include 'top.php';
 // initialize variables
