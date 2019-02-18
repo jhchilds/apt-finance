@@ -66,21 +66,8 @@ if ($debug) {
 
   <body id="form">
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 <?php
-// include 'top.php';
+
 // initialize variables
 $firstName = "";
 $lastName = "";
@@ -136,6 +123,7 @@ if (isset($_POST["btnSubmit"])) {
         $firstName = htmlentities($_POST["txtFirstName"], ENT_QUOTES, "UTF-8");
         $lastName = htmlentities($_POST["txtLastName"], ENT_QUOTES, "UTF-8");
         $email = filter_var($_POST["txtEmail"], FILTER_SANITIZE_EMAIL);
+
         $rent = htmlentities($_POST["txtRent"], ENT_QUOTES, "UTF-8");
         $water = htmlentities($_POST["txtWater"], ENT_QUOTES, "UTF-8");
         $rubbish = htmlentities($_POST["txtRubbish"], ENT_QUOTES, "UTF-8");
@@ -143,25 +131,7 @@ if (isset($_POST["btnSubmit"])) {
         $amount = htmlentities($_POST["txtAmount"], ENT_QUOTES, "UTF-8");
 
 
-        $occupation = htmlentities($_POST["radOccupation"], ENT_QUOTES, "UTF-8");
-        if (isset($_POST["chkListen"])) {
-            $learn = true;
-            $totalChecked++;
-        } else {
-            $listen = false;
-        }
-        if (isset($_POST["chkWork"])) {
-            $work = true;
-            $totalChecked++;
-        } else {
-            $work = false;
-        }
-        if (isset($_POST["chkLearn"])) {
-            $learn = true;
-            $totalChecked++;
-        } else {
-            $learn = false;
-        }
+
         $payStatus = htmlentities($_POST["lstStatus"], ENT_QUOTES, "UTF-8");
         $comments = htmlentities($_POST["txtComments"], ENT_QUOTES, "UTF-8");
 
@@ -230,16 +200,6 @@ if (isset($_POST["btnSubmit"])) {
     }
 
 
-
-    // if ($subscribe != "Subscribe" AND $subscribe != "Only Major Events" AND $occupation != "This One Only") {
-    //     $errorMsg[] = "Please choose an option for receiving emails";
-    //     $subscribeERROR = true;
-    // }
-    // if ($totalChecked < 1) {
-    //     $errorMsg[] = 'Please choose at least one option for preference';
-    //     $wantERROR = true;
-    // }
-
     if ($payStatus == "") {
         $errorMsg[] = 'Please choose a staus';
         $payStatusERROR = true;
@@ -273,11 +233,6 @@ if (isset($_POST["btnSubmit"])) {
 
 
 
-
-    // $dataRecord[] = $subscribe;
-    // $dataRecord[] = $listen;
-    // $dataRecord[] = $work;
-    // $dataRecord[] = $learn;
     $dataRecord[] = $payStatus;
     $dataRecord[] = $comments;
     // setup csv file
@@ -289,7 +244,7 @@ if (isset($_POST["btnSubmit"])) {
     // close file
     fclose($file);
         // create the email message
-        $message = '<h1>FINANCES Below:</h1>';
+        $message = '<h1 style="text-align:center">FINANCES Below:</h1>';
 
         foreach ($_POST as $htmlName => $value) {
 
@@ -489,66 +444,6 @@ if (isset($_POST["btnSubmit"])) {
 
                 </fieldset> <!-- ends bills -->
 
-
-
-
-
-
-
-
-
-
-<!--                ================= radio buttons =================-->
-                <!-- <fieldset class = "radio <?php if ($subscribeERROR) print ' mistake'; ?>">
-                    <legend>Do you want to subscribe to my updates?</legend>
-                    <p>
-                        <label class="radio-field"><input type="radio" id="radOccupationStudent" name="radSubscribe" value="Subscribe" tabindex="572" <?php if ($subscribe == "Subscribe") echo ' checked="checked" '; ?>>
-                            Subscribe</label>
-                    </p>
-
-                    <p>
-                        <label class="radio-field"><input type="radio" id="radOccupationTeacher" name="radSubscribe" value="Teacher" tabindex="574" <?php if ($subscribe == "Only Major Events") echo ' checked="checked" '; ?>>
-                            Only Major Events</label>
-                    </p>
-
-                    <p>
-                        <label class="radio-field"><input type="radio" id="radOccupationOther" name="radSubscribe" value="Other" tabindex="574" <?php if ($subscribe == "This One Only") echo ' checked="checked" '; ?>>
-                            This One Only</label>
-                    </p>
-                </fieldset> -->
-<!--                    ======================== check ======================-->
-                <!-- <fieldset class = "checkbox <?php if ($wantERROR) print ' mistake'; ?>">
-                    <legend>What is your interest in getting in touch with me? (check at least one and all that apply):</legend>
-                    <p>
-                        <label class="check-field">
-                            <input <?php if ($listen) print " checked "; ?>
-                                id="chkListen"
-                                name="chkListen"
-                                tabindex="420"
-                                type="checkbox"
-                                value="listen"> I Just Want to Listen!</label>
-                    </p>
-
-                    <p>
-                        <label class="check-field">
-                            <input <?php if ($work) print " checked "; ?>
-                                id="chkWork"
-                                name="chkWork"
-                                tabindex="420"
-                                type="checkbox"
-                                value="work"> I Would Like To Work With You On Music!</label>
-                    </p>
-
-                    <p>
-                        <label class="check-field">
-                            <input <?php if ($learn) print " checked "; ?>
-                                id="chkLearn"
-                                name="chkLearn"
-                                tabindex="420"
-                                type="checkbox"
-                                value="learn"> I Want to Learn From You! (I Don't Recommend This Option)</label>
-                    </p>
-                </fieldset> -->
 
 
 <!--                    ======================== list options ======================-->
