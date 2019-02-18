@@ -243,7 +243,7 @@ if (isset($_POST["btnSubmit"])) {
 
         foreach ($_POST as $htmlName => $value) {
 
-            $message .= '<h2 style="text-align:center; color: #222">';
+            $message .= '<section style="text-align:center"> <h2 style="text-align:left; color: #222">';
             // breaks up form
             //
             $camelCase = preg_split('/(?=[A-Z])/', substr($htmlName, 3));
@@ -253,7 +253,7 @@ if (isset($_POST["btnSubmit"])) {
             }
 
             if (is_numeric($value)){
-              $message .= ' = $' . htmlentities(number_format($value,2), ENT_QUOTES, "UTF-8") . '</h2>';
+              $message .= ' = $' . htmlentities(number_format($value,2), ENT_QUOTES, "UTF-8") . '</h2> </section>';
             }
 
             else{
