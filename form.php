@@ -292,7 +292,8 @@ if (isset($_POST["btnSubmit"])) {
     // close file
     fclose($file);
         // create the email message
-        $message = '<h2>Your information.</h2>';
+        $message = '<h1>FINANCES Below:</h1>';
+
         foreach ($_POST as $htmlName => $value) {
 
             $message .= '<p>';
@@ -314,19 +315,19 @@ if (isset($_POST["btnSubmit"])) {
         $from = 'Childs Finance <jhchilds@uvm.edu>';
 
         // subject of mail
-        $subject = 'Rent/Electric' . date("m/d/Y");
+        $subject = 'Rent & Utilities' . date("m/d/Y");
         $mailed = sendMail($to, $cc, $bcc, $from, $subject, $message);
     } // end if form is valid
 } // ends if form submitted
 ?>
     <article>
-        <h2>Get in Contact With Me!</h2>
+        <h2>Send Financial Data</h2>
 <?php
 
     // Display form if first time or errors
     if (isset($_POST["btnSubmit"]) AND empty($errorMsg)) {
-        print '<h2>Thank you for providing your information.</h2>';
-        print '<p>For your records a copy of this data has ';
+        print '<h2>Success</h2>';
+        print '<p>Data sent to ';
         if (!$mailed) {
             print "not ";
         }
@@ -334,12 +335,10 @@ if (isset($_POST["btnSubmit"])) {
         print '<p>To: ' . $email . '</p>';
         print $message;
     } else {
-    print '<h3>The Best Way to Get in Contact With Me</h3>';
-    print '<p class="form-heading">I will not spam you, I promise</p>';
 
         if ($errorMsg) {
             print '<div id="errors">' . PHP_EOL;
-            print '<h2>Your form has the following mistakes that need to be fixed.</h2>' . PHP_EOL;
+            print '<h2>MISTAKES</h2>' . PHP_EOL;
             print '<ol>' . PHP_EOL;
             foreach ($errorMsg as $err) {
                 print '<li>' . $err . '</li>' . PHP_EOL;
@@ -484,7 +483,7 @@ if (isset($_POST["btnSubmit"])) {
 
 
 
-                </fieldset> <!-- ends contact -->
+                </fieldset> <!-- ends bills -->
 
 
 
@@ -586,7 +585,7 @@ if (isset($_POST["btnSubmit"])) {
 <!--                    ======================== submit ======================-->
                 <fieldset class="buttons">
                     <legend></legend>
-                    <input class="button" id = "btnSubmit" name = "btnSubmit" tabindex="900" type = "submit" value = "Email Me!" >
+                    <input class="button" id = "btnSubmit" name = "btnSubmit" tabindex="900" type = "submit" value = "Submit" >
                 </fieldset>
     </form>
     <?php
