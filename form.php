@@ -302,12 +302,12 @@ if (isset($_POST["btnSubmit"])) {
                 $message .= $oneWord . ' ';
             }
 
-            if (is_string($value)){
-              $message .= ' = ' . htmlentities($value, ENT_QUOTES, "UTF-8") . '</p>';
+            if (is_numeric($value)){
+              $message .= ' = ' . htmlentities(number_format($value), ENT_QUOTES, "UTF-8") . '</p>';
             }
 
             else{
-              $message .= ' = ' . htmlentities(number_format($value), ENT_QUOTES, "UTF-8") . '</p>';
+              $message .= ' = ' . htmlentities($value, ENT_QUOTES, "UTF-8") . '</p>';
             }
 
         // mailing information
