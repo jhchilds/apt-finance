@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <?php
 $phpSelf = htmlentities($_SERVER['PHP_SELF'], ENT_QUOTES, "UTF-8");
 
@@ -12,16 +13,13 @@ $path_parts = pathinfo($phpSelf);
         <meta name="author" content="Joshua Childs">
         <meta name="description" content="cs142 LAB2 editing CSS of a form" >
         <!-- style sheet link -->
-        <link href="final_style_sheet.css" type="text/css" rel="stylesheet" />
-
-        <link href="form.css" type="text/css" rel="stylesheet" />
-        <link href="form.css" type="text/css" rel="alternate stylesheet" />
+        <link href="css/form.css" type="text/css" rel="stylesheet" />
 
 
     </head>
 
 <?php
-$debug = true;
+$debug = false;
 
 
 $domain = '//';
@@ -455,46 +453,6 @@ if (isset($_POST["btnSubmit"])) {
 
             </fieldset> <!-- ends radio & buttons -->
 
-
-
-
-
-            <!-- <fieldset class="radio">
-                <legend>Age</legend>
-                <p>
-                  <label class="radio-field">
-                    <input type="radio" name="age" value="18 OR Younger" > 18 or Younger
-                  </label>
-                </p>
-                <p>
-                  <label class="radio-field">
-                    <input type="radio" name="age" value="19" > 19
-                  </label>
-                </p>
-                <p>
-                  <label class="radio-field">
-                    <input type="radio" name="age" value="20" > 20
-                  </label>
-                </p>
-                <p>
-                  <label class="radio-field">
-                    <input type="radio" name="age" value="21 OR Older" > 21 or Older
-                  </label>
-                </p>
-            </fieldset> -->
-
-
-
-            <!-- <fieldset class="textarea">
-                <legend>Feedback</legend>
-
-                <p>
-                    <label for="txtComments" class="required">Comments</label>
-                    <textarea id="txtComments" name="txtComments"
-                              tabindex="602" onfocus="this.select()"></textarea>
-                </p>
-
-            </fieldset> -->
 
 
 
