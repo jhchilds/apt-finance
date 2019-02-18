@@ -305,7 +305,7 @@ if (isset($_POST["btnSubmit"])) {
                 $message .= $oneWord . ' ';
             }
 
-            $message .= ' = ' . htmlentities($value, ENT_QUOTES, "UTF-8") . '</p>';
+            $message .= ' = ' . htmlentities(number_format($value), ENT_QUOTES, "UTF-8") . '</p>';
         // mailing information
         }
         $to = $email;
