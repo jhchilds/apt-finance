@@ -231,17 +231,14 @@ if (isset($_POST["btnSubmit"])) {
 
 
 
-
-
-
-    if ($subscribe != "Subscribe" AND $subscribe != "Only Major Events" AND $occupation != "This One Only") {
-        $errorMsg[] = "Please choose an option for receiving emails";
-        $subscribeERROR = true;
-    }
-    if ($totalChecked < 1) {
-        $errorMsg[] = 'Please choose at least one option for preference';
-        $wantERROR = true;
-    }
+    // if ($subscribe != "Subscribe" AND $subscribe != "Only Major Events" AND $occupation != "This One Only") {
+    //     $errorMsg[] = "Please choose an option for receiving emails";
+    //     $subscribeERROR = true;
+    // }
+    // if ($totalChecked < 1) {
+    //     $errorMsg[] = 'Please choose at least one option for preference';
+    //     $wantERROR = true;
+    // }
 
     if ($payStatus == "") {
         $errorMsg[] = 'Please choose a staus';
@@ -277,10 +274,10 @@ if (isset($_POST["btnSubmit"])) {
 
 
 
-    $dataRecord[] = $subscribe;
-    $dataRecord[] = $listen;
-    $dataRecord[] = $work;
-    $dataRecord[] = $learn;
+    // $dataRecord[] = $subscribe;
+    // $dataRecord[] = $listen;
+    // $dataRecord[] = $work;
+    // $dataRecord[] = $learn;
     $dataRecord[] = $payStatus;
     $dataRecord[] = $comments;
     // setup csv file
