@@ -1,5 +1,78 @@
+<!DOCTYPE html>
 <?php
-include 'top.php';
+$phpSelf = htmlentities($_SERVER['PHP_SELF'], ENT_QUOTES, "UTF-8");
+
+// break the url up into an array, then pull out just the filename
+$path_parts = pathinfo($phpSelf);
+?>
+<html lang="en">
+    <!-- Head -->
+    <head>
+        <title>Home Page</title>
+        <meta charset="utf-8">
+        <meta name="author" content="Joshua Childs">
+        <meta name="description" content="cs142 LAB2 editing CSS of a form" >
+        <!-- style sheet link -->
+        <link href="css/form.css" type="text/css" rel="stylesheet" />
+
+
+    </head>
+
+<?php
+$debug = true;
+
+
+$domain = '//';
+
+$server = htmlentities($_SERVER['SERVER_NAME'], ENT_QUOTES, 'UTF-8');
+
+$domain .= $server;
+if ($debug) {
+
+    print '<p>php Self: ' . $phpSelf;
+    print '<p>Path Parts<pre>';
+    print_r($path_parts);
+    print '</pre></p>';
+}
+
+// %^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%
+
+print PHP_EOL . '<!-- include libraries -->' . PHP_EOL;
+require_once('lib/security.php');
+// Path Parts
+if ($path_parts['filename'] == "form") {
+    print PHP_EOL . '<!-- include form libraries -->' . PHP_EOL;
+    include 'lib/validation-functions.php';
+    include 'lib/mail-message.php';
+}
+print PHP_EOL . '<!-- finished including libraries -->' . PHP_EOL;
+?>
+
+
+
+<?php
+
+// print '<body id="' . $path_parts['filename'] . '">';
+
+print '<!-- ######################     Start of Body   ################### -->';
+
+// include ('header.php');
+// include ('nav.php');
+
+if ($debug) {
+    print '<p>DEBUG MODE IS ON</p>';
+}
+?>
+
+  <body id="form">
+
+
+
+
+
+<?php
+<?php
+// include 'top.php';
 // initialize variables
 $firstName = "";
 $lastName = "";
