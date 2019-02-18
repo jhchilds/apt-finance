@@ -1,76 +1,7 @@
+<!DOCTYPE html>
 <?php
-$phpSelf = htmlentities($_SERVER['PHP_SELF'], ENT_QUOTES, "UTF-8");
-
-// break the url up into an array, then pull out just the filename
-$path_parts = pathinfo($phpSelf);
+include 'top.php';
 ?>
-<html lang="en">
-    <!-- Head -->
-    <head>
-        <title>Home Page</title>
-        <meta charset="utf-8">
-        <meta name="author" content="Joshua Childs">
-        <meta name="description" content="cs142 LAB2 editing CSS of a form" >
-        <!-- style sheet link -->
-        <link href="final_style_sheet.css" type="text/css" rel="stylesheet" />
-
-        <link href="form.css" type="text/css" rel="stylesheet" />
-        <link href="form.css" type="text/css" rel="alternate stylesheet" />
-
-
-    </head>
-
-<?php
-$debug = true;
-
-
-$domain = '//';
-
-$server = htmlentities($_SERVER['SERVER_NAME'], ENT_QUOTES, 'UTF-8');
-
-$domain .= $server;
-if ($debug) {
-
-    print '<p>php Self: ' . $phpSelf;
-    print '<p>Path Parts<pre>';
-    print_r($path_parts);
-    print '</pre></p>';
-}
-
-// %^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%
-
-print PHP_EOL . '<!-- include libraries -->' . PHP_EOL;
-require_once('lib/security.php');
-// Path Parts
-if ($path_parts['filename'] == "form") {
-    print PHP_EOL . '<!-- include form libraries -->' . PHP_EOL;
-    include 'lib/validation-functions.php';
-    include 'lib/mail-message.php';
-}
-print PHP_EOL . '<!-- finished including libraries -->' . PHP_EOL;
-?>
-
-
-
-<?php
-
-// print '<body id="' . $path_parts['filename'] . '">';
-
-print '<!-- ######################     Start of Body   ################### -->';
-
-// include ('header.php');
-// include ('nav.php');
-
-if ($debug) {
-    print '<p>DEBUG MODE IS ON</p>';
-}
-?>
-
-  <body id="form">
-
-
-
-
 
 <?php
 //%^%^%%^%^%^%^%^%^%^%^%^%^%^%^%^%^%%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^
@@ -261,9 +192,9 @@ if (isset($_POST["btnSubmit"])) {
     $to = $email; // the person who filled out the form
         $cc = '';
         $bcc = '';
-        $from = 'Childs Finance <jhchilds@uvm.edu>';
+        $from = 'Burlington Viewshed <jhchilds@uvm.edu>';
         // subject of mail should make sense to your form
-        $subject = 'Rent/Water/Rubbish/Electric: ' . date("d/m/Y");
+        $subject = 'You Registered for Information About Access to the trailheads in the Burlington Viewshed ';
 
         $mailed = sendMail($to, $cc, $bcc, $from, $subject, $message);
     } // end form is valid
@@ -295,7 +226,7 @@ if (isset($_POST["btnSubmit"])) {
         print $message;
     } else {
 
-        print '<h2>Send Finance Data</h2>';
+        print '<h2>Please Register With Us</h2>';
         print '<p class="heading"> Fill out this form to get put on our email list.</p>';
 
         //#########################
@@ -337,7 +268,7 @@ if (isset($_POST["btnSubmit"])) {
               method="post">
 
             <fieldset class="text">
-                <legend>Tenant Email</legend>
+                <legend>Contact Information</legend>
 
 
 
@@ -377,89 +308,7 @@ if (isset($_POST["btnSubmit"])) {
             </fieldset> <!-- ends radio & buttons -->
 
 
-
-            <fieldset class="text">
-                <legend>Total Due</legend>
-                <p>
-                    <label class="required text-field" for="txtRent">Rent</label>
-                    <input
-                        id="txtRent"
-                        maxlength="45"
-                        name="txtRent"
-                        onfocus="this.select()"
-                        placeholder="rent amount"
-                        tabindex="120"
-                        type="text"
-                        value="$2000.00"
-                        >
-                </p>
-
-
-                <p>
-                    <label class="required text-field" for="txtRubbish">Rubbish</label>
-                    <input
-                        id="txtRubbish"
-                        maxlength="45"
-                        name="txtRubbish"
-                        onfocus="this.select()"
-                        placeholder="rubbish amount"
-                        tabindex="120"
-                        type="text"
-                        value="$24.00"
-                        >
-                </p>
-
-
-                <p>
-                    <label class="required text-field" for="txtWater">Water</label>
-                    <input
-                        id="txtWater"
-                        maxlength="45"
-                        name="txtWater"
-                        onfocus="this.select()"
-                        placeholder="water amount"
-                        tabindex="120"
-                        type="text"
-                        value="$0.00"
-                        >
-                </p>
-
-
-                <p>
-                    <label class="required text-field" for="txtElectric">Electric</label>
-                    <input
-                        id="txtElectric"
-                        maxlength="45"
-                        name="txtElectric"
-                        onfocus="this.select()"
-                        placeholder="electric amount"
-                        tabindex="120"
-                        type="text"
-                        value="$0.00"
-                        >
-                </p>
-
-                <p>
-                    <label class="required text-field" for="txtOwed">Amount Owed</label>
-                    <input
-                        id="txtOwed"
-                        maxlength="45"
-                        name="txtOwed"
-                        onfocus="this.select()"
-                        placeholder="owed amount"
-                        tabindex="120"
-                        type="text"
-                        value="$0.00"
-                        >
-                </p>
-
-            </fieldset> <!-- ends radio & buttons -->
-
-
-
-
-
-            <!-- <fieldset class="radio">
+            <fieldset class="radio">
                 <legend>Age</legend>
                 <p>
                   <label class="radio-field">
@@ -481,11 +330,51 @@ if (isset($_POST["btnSubmit"])) {
                     <input type="radio" name="age" value="21 OR Older" > 21 or Older
                   </label>
                 </p>
+            </fieldset>
+
+            <!-- <fieldset class="checkbox">
+                <legend>Favorite Bob Quotes</legend>
+                <p>
+                  <label class="check-field">
+                    <input
+                        name ="bob"
+                        value="Be Cool"
+                        type="checkbox"
+                        > Be Cool </label>
+                </p>
+
+                <p>
+                <label class="check-field">
+                    <input
+                        name ="bob"
+                        value="Google It"
+                        type="checkbox"
+                        > Google It</label>
+                </p>
+                <p>
+
+               <label class="check-field">
+                    <input
+                        name ="bob"
+                        value="Email Me"
+                        type="checkbox"
+                        > Email Me</label>
+
+              </p>
+              <p>
+              <label class="check-field">
+                    <input
+                        name ="bob"
+                        value="Groovy"
+                        type="checkbox"
+                        > Groovy </label>
+                </p>
             </fieldset> -->
 
 
 
-            <!-- <fieldset class="textarea">
+
+            <fieldset class="textarea">
                 <legend>Feedback</legend>
 
                 <p>
@@ -494,18 +383,19 @@ if (isset($_POST["btnSubmit"])) {
                               tabindex="602" onfocus="this.select()"></textarea>
                 </p>
 
-            </fieldset> -->
+            </fieldset>
 
 
 
 
             <fieldset  class="listbox ">
-                <legend>Pay Status</legend>
+                <legend>What is your favorite dining hall at UVM?(Optional)</legend>
                 <p>
 
                     <select tabindex="592" size="1">
-                        <option value="Paid" >Paid</option>
-                        <option value="Not Paid" >Not Paid</option>
+                        <option value="Harris Millis" >Harris Millis</option>
+                        <option value="Simpson" >Simpson</option>
+                        <option value="Central"  selected="selected" >Central</option>
                     </select>
                 </p>
 
