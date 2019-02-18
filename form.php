@@ -303,7 +303,7 @@ if (isset($_POST["btnSubmit"])) {
             }
 
             if (is_numeric($value)){
-              $message .= ' = $' . htmlentities(number_format($value), ENT_QUOTES, "UTF-8") . '</p>';
+              $message .= ' = $' . htmlentities(number_format($value,2), ENT_QUOTES, "UTF-8") . '</p>';
             }
 
             else{
