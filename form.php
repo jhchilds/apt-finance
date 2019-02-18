@@ -96,7 +96,7 @@ $subscribe = "Subscribe";
 $listen = true;
 $work = false;
 $learn = false;
-$reason = "Class";
+$payStatus = "Not Paid";
 $comments = '';
 
 // error variables
@@ -115,7 +115,7 @@ $amountERROR = false;
 $subscribeERROR = false;
 $wantERROR = false;
 $totalChecked = 0;
-$reasonERROR = false;
+$payStatusERROR = false;
 $commentsERROR = false;
 
 // create array for error messages
@@ -162,7 +162,7 @@ if (isset($_POST["btnSubmit"])) {
         } else {
             $learn = false;
         }
-        $reason = htmlentities($_POST["lstReason"], ENT_QUOTES, "UTF-8");
+        $payStatus = htmlentities($_POST["lstStatus"], ENT_QUOTES, "UTF-8");
         $comments = htmlentities($_POST["txtComments"], ENT_QUOTES, "UTF-8");
 
     if ($firstName == "") {
@@ -243,9 +243,9 @@ if (isset($_POST["btnSubmit"])) {
         $wantERROR = true;
     }
 
-    if ($reason == "") {
-        $errorMsg[] = 'Please choose a reason';
-        $reasonERROR = true;
+    if ($payStatus == "") {
+        $errorMsg[] = 'Please choose a staus';
+        $payStatusERROR = true;
     }
 
     if ($comments != "") {
@@ -281,7 +281,7 @@ if (isset($_POST["btnSubmit"])) {
     $dataRecord[] = $listen;
     $dataRecord[] = $work;
     $dataRecord[] = $learn;
-    $dataRecord[] = $reason;
+    $dataRecord[] = $payStatus;
     $dataRecord[] = $comments;
     // setup csv file
     $filename = 'data/registration.csv';
@@ -315,7 +315,7 @@ if (isset($_POST["btnSubmit"])) {
         $from = 'Childs Finance <jhchilds@uvm.edu>';
 
         // subject of mail
-        $subject = 'Rent & Utilities' . date("m/d/Y");
+        $subject = 'Rent and Utilities: ' . date("m/d/Y");
         $mailed = sendMail($to, $cc, $bcc, $from, $subject, $message);
     } // end if form is valid
 } // ends if form submitted
@@ -495,7 +495,7 @@ if (isset($_POST["btnSubmit"])) {
 
 
 <!--                ================= radio buttons =================-->
-                <fieldset class = "radio <?php if ($subscribeERROR) print ' mistake'; ?>">
+                <!-- <fieldset class = "radio <?php if ($subscribeERROR) print ' mistake'; ?>">
                     <legend>Do you want to subscribe to my updates?</legend>
                     <p>
                         <label class="radio-field"><input type="radio" id="radOccupationStudent" name="radSubscribe" value="Subscribe" tabindex="572" <?php if ($subscribe == "Subscribe") echo ' checked="checked" '; ?>>
@@ -511,9 +511,9 @@ if (isset($_POST["btnSubmit"])) {
                         <label class="radio-field"><input type="radio" id="radOccupationOther" name="radSubscribe" value="Other" tabindex="574" <?php if ($subscribe == "This One Only") echo ' checked="checked" '; ?>>
                             This One Only</label>
                     </p>
-                </fieldset>
+                </fieldset> -->
 <!--                    ======================== check ======================-->
-                <fieldset class = "checkbox <?php if ($wantERROR) print ' mistake'; ?>">
+                <!-- <fieldset class = "checkbox <?php if ($wantERROR) print ' mistake'; ?>">
                     <legend>What is your interest in getting in touch with me? (check at least one and all that apply):</legend>
                     <p>
                         <label class="check-field">
@@ -544,27 +544,21 @@ if (isset($_POST["btnSubmit"])) {
                                 type="checkbox"
                                 value="learn"> I Want to Learn From You! (I Don't Recommend This Option)</label>
                     </p>
-                </fieldset>
+                </fieldset> -->
 
 
 <!--                    ======================== list options ======================-->
-                <fieldset class="listbox <?php if ($reasonERROR) print ' mistake'; ?>">
+                <fieldset class="listbox <?php if ($payStatusERROR) print ' mistake'; ?>">
 
-                    <legend>Why are you here?</legend>
-                    <select id="lstReason"
-                            name="lstReason"
+                    <legend>Paid Status</legend>
+                    <select id="lstStatus"
+                            name="lstStatus"
                             tabindex="520" >
-                        <option <?php if ($reason == "Class") print " selected "; ?>
-                            value="Class">Class</option>
+                        <option <?php if ($payStatus == "Not Paid") print " selected "; ?>
+                            value="Class">Not Paid</option>
 
-                        <option <?php if ($reason == "Friend told me") print " selected "; ?>
-                            value="Friend told me">Friend told me</option>
-
-                        <option <?php if ($reason == "Soundcloud") print " selected "; ?>
-                            value="Soundcloud">Soundcloud</option>
-
-                        <option <?php if ($reason == "Reddit, somehow") print " selected "; ?>
-                            value="Reddit, somehow">Reddit, somehow</option>
+                        <option <?php if ($payStatus == "Paid") print " selected "; ?>
+                            value="Friend told me">Paid</option>
 
                     </select>
 
@@ -573,7 +567,7 @@ if (isset($_POST["btnSubmit"])) {
 <!--                    ======================== text ======================-->
                 <fieldset class="textarea">
                     <p>
-                        <label class="required" for="txtComments">Anything else you want to tell me?</label>
+                        <label class="required" for="txtComments">Comments</label>
                         <textarea <?php if ($commentsERROR) print 'class="mistake"'; ?>
                             id="txtComments"
                             name="txtComments"
