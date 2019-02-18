@@ -459,17 +459,7 @@ if (isset($_POST["btnSubmit"])) {
 
 
 
-            <fieldset  class="listbox ">
-                <legend>Pay Status</legend>
-                <p>
 
-                    <select tabindex="592" size="1">
-                        <option value="Paid" >Paid</option>
-                        <option value="Not Paid" >Not Paid</option>
-                    </select>
-                </p>
-
-            </fieldset>
 
 
 
@@ -479,6 +469,17 @@ if (isset($_POST["btnSubmit"])) {
             </fieldset>
 
         </form>
+
+        <fieldset  class="listbox" form="form">
+            <legend>Pay Status</legend>
+            <p>
+                <select tabindex="592" size="1">
+                    <option value="Paid" >Paid</option>
+                    <option value="Not Paid" >Not Paid</option>
+                </select>
+            </p>
+
+        </fieldset>
         <?php
     } //end body submit
     ?>
