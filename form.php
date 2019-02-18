@@ -97,11 +97,6 @@ $rubbishERROR = false;
 $electricERROR = false;
 $amountERROR = false;
 
-
-
-$subscribeERROR = false;
-$wantERROR = false;
-$totalChecked = 0;
 $payStatusERROR = false;
 $commentsERROR = false;
 
@@ -371,7 +366,7 @@ if (isset($_POST["btnSubmit"])) {
                                maxlength="45"
                                name="txtRent"
                                onfocus="this.select()"
-                               placeholder="Enter rent bill"
+                               placeholder="2000"
                                tabindex="100"
                                type="text"
                                value="<?php print $rent; ?>"
@@ -402,7 +397,7 @@ if (isset($_POST["btnSubmit"])) {
                                maxlength="45"
                                name="txtRubbish"
                                onfocus="this.select()"
-                               placeholder="Enter rubbish bill"
+                               placeholder="24"
                                tabindex="100"
                                type="text"
                                value="<?php print $rubbish; ?>"
