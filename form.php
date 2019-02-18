@@ -248,7 +248,7 @@ if (isset($_POST["btnSubmit"])) {
 
         foreach ($_POST as $htmlName => $value) {
 
-            $message .= '<h2>';
+            $message .= '<h2 style="text-align:center; color: #f3f3f3">';
             // breaks up form
             //
             $camelCase = preg_split('/(?=[A-Z])/', substr($htmlName, 3));
