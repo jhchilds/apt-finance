@@ -221,6 +221,14 @@ if (isset($_POST["btnSubmit"])) {
         $electricERROR = true;
     }
 
+    if ($amount == "") {
+        $errorMsg[] = 'Please enter amount';
+        $amountERROR = true;
+    } elseif (!verifyAlphaNum($amount)) {
+        $errorMsg[] = "Amount appears to have extra characters.";
+        $amountERROR = true;
+    }
+
 
 
 
