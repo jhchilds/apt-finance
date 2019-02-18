@@ -10,7 +10,26 @@
      <meta name="author" content="Joshua Childs">
      <link href="css/table.css" type="text/css" rel="stylesheet" />
      <link rel="stylesheet" href="css/custom.css" >
+     <link rel="stylesheet" href="css/form.css" >
+
      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
      <title>28 South Willard</title>
   </head>
-<body id="table">
+<?php
+  // %^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%
+  $path_parts = pathinfo($phpSelf);
+
+  print PHP_EOL . '<!-- include libraries -->' . PHP_EOL;
+  require_once('lib/security.php');
+  // Path Parts
+  if ($path_parts['filename'] == "form") {
+      print PHP_EOL . '<!-- include form libraries -->' . PHP_EOL;
+      include 'lib/validation-functions.php';
+      include 'lib/mail-message.php';
+  }
+  print PHP_EOL . '<!-- finished including libraries -->' . PHP_EOL;
+
+  // print '<body id="' . $path_parts['filename'] . '">';
+
+?>
+

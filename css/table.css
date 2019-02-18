@@ -19,11 +19,7 @@
   text-align: center;
 }
 /*--------Table Styling-------  */
-
-#table{
-  overflow-x: auto;
-}
-#table{
+#table:not(nav){
   background: #181818;
   font-family: 'Rokkitt', helvetica, arial, sans-serif;
   font-size: 20px;

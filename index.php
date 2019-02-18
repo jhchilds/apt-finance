@@ -1,6 +1,6 @@
 <?php
 include('top.php');
-// include('nav.php');
+include('nav.php');
 // ************** Open finances Data ****************************************
 $debug = false;
 if(isset($_GET["debug"])){
@@ -57,11 +57,12 @@ if($debug){
  //************** Close Finance Data ****************************************
        fclose($file);
 ?>
-    <!-- <body id="table"> -->
+    <body id="table">
+    <!-- <div id="table"> -->
         <header>
             <h1>Apartment Finances</h1>
         </header>
-            <div style="overflow-x: auto;">
+            <section style="overflow-x: auto;">
             <table>
             <?php
             // cleaner than foreach loops
@@ -85,7 +86,10 @@ if($debug){
             print '<tr><td colspan="10">' . count($finances) . ' Months </td></tr>';
             ?>
             </table>
-          </div>
+          </section>
+        <!-- </div> -->
+
+
 
 
 

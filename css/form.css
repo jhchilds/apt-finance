@@ -1,0 +1,212 @@
+/*
+    Created on : Jan 25, 2019, 2:51:42 PM
+    Author     : joshuachilds
+*/
+
+/*****************     main layout section             ************************/
+@import url('https://fonts.googleapis.com/css?family=Cabin+Sketch|Istok+Web|Lalezar|Lato|Noto+Serif+KR|Poppins|Scada|Ubuntu');
+
+body{
+    margin: auto;
+    width: 90%;
+    background-color: #222;
+}
+
+#form h2{
+  padding-left: 5px;
+  padding-right: 5px;
+  font-family: 'Ubuntu';
+  font-size: 4.25em;
+  background-color: #f3f3f3;
+  color: black;
+  border: 7px solid black;
+  text-align: center;
+  font-variant: small-caps;
+}
+
+#form h2:hover{
+  background-color: #00e600;
+  transition: 2s;
+}
+/*********************************FORM***********************************/
+#form{
+    font: bold 15px;
+    font-family: 'Ubuntu';
+    max-width: 60em;
+}
+
+/* need to clear any floats that may exist */
+fieldset{
+    border: 6px solid #f3f3f3;
+    clear: both;
+    margin-top: 2em;
+    padding: .6em;
+    background-color: #222;
+}
+
+fieldset:hover{
+    border: 6px solid black;
+    transition:1s;
+}
+
+fieldset:hover legend{
+
+}
+
+#form fieldset.buttons{
+  background-color: #222;
+}
+
+
+#form label {
+    color: #f3f3f3;
+    font-size: 1em;
+    font-weight: bold;
+}
+
+#form legend{
+    font-size: 30px;
+    color: #f3f3f3;
+}
+
+
+#form p.heading {
+    display: none;
+}
+#form label.text-field{
+    display: block;
+    float: left;
+    margin: 0 0 1.2em;
+    padding-right: 0.5em;
+    padding-top: 0.75em;
+    text-align: right;
+    width: 7em;
+}
+
+#form label.check-field{
+    margin: 0 0 1.25em 7.5em;
+}
+
+#form label.radio-field{
+    margin: 0 0 1.25em 7.5em;
+}
+
+#form input,
+#form textarea,
+#form select{
+    box-sizing: border-box;
+    /* border: 2px solid #C2C2C2; */
+    /* box-shadow: 2px 2px 4px #EBEBEB; */
+    border-radius: 3px;
+    padding: 1em;
+    color: black;
+    font-size: 15px;
+    outline: none;
+    font-weight: bold;
+    background-color: #f3f3f3;
+
+
+}
+#form input:focus,
+#form textarea:focus,
+#form select:focus{
+    border: 2px solid #0C0;
+    background-color: white;
+}
+#form textarea{
+    height: 6em;
+    width: 100%;
+    background-color: #f3f3f3;
+    color:black;
+    font-size: 20px;
+    font-family: 'Ubuntu'
+}
+
+#form input[type=submit]{
+    font-size: 18px;
+    background: black none repeat scroll 0 0;
+    border: medium none;
+    border-radius: 5px;
+    box-shadow: 1px 1px 4px #dadada;
+    color: #fff;
+    margin: 1em;
+    padding: 1em 2em;
+}
+/*FOR SUBMIT BUTTON*/
+#form input[type=submit]:hover{
+  background-color: #66ff33;
+  color: black;
+  transition: .5s;
+
+}
+
+#form .buttons legend{
+    display: none;
+}
+#form .buttons{
+    border: none;
+    text-align: center;
+    background-color: #c6ffb3 ;
+}
+
+
+/* The container must be positioned relative: */
+.listbox {
+ position: relative;
+ font-family: 'Ubuntu';
+}
+
+
+/* style the errors in the form so they are visible */
+#form .mistake, #form .mistake:focus {
+    color: black;
+    background-color:#ff3333;
+    border: thin solid #000;
+}
+
+
+/* style the list of errors that will show before the form */
+#errors ol li{
+    color: black;
+}
+/* when there is a mistake with check boxes, radio buttons or list boxes we set
+   the class to the field set. This pulls the legend down into the background.
+   Normally the legend text sits in the middle of the line height */
+.mistake legend{
+    padding-top: 1.5em;
+}
+
+
+/*********************************CHECKBOXES***********************************/
+/* Customize the label (the container) */
+.check-field input {
+  height: 15px;
+  width: 15px;
+}
+/*********************************NAV***********************************/
+
+#form nav{
+    background-color: white;
+    border: solid black;
+    max-width: 100%;
+}
+
+
+@media only screen and (max-width: 450px) {
+  #form {
+    font-size:10px;
+  }
+
+
+  #form input,
+  #form textarea,
+  #form select{
+      font-size: 10px;
+
+  }
+
+  #form nav{
+    display: none;
+  }
+
+}
