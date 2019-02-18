@@ -239,11 +239,11 @@ if (isset($_POST["btnSubmit"])) {
     // close file
     fclose($file);
         // create the email message
-        $message = '<body style="background-color:#f3f3f3"> <h1 style="text-align:center; color: #222; text-decoration:underline; padding-bottom:2em;">'. date("m/d/Y") .' FINANCES:</h1>';
+        $message = '<body style="background-color:#f3f3f3"> <section style="text-align:center"> <h1 style="text-align:center; color: #222; text-decoration:underline; padding-bottom:2em;">'. date("m/d/Y") .' FINANCES:</h1>';
 
         foreach ($_POST as $htmlName => $value) {
 
-            $message .= '<section style="text-align:center"> <h2 style="text-align:left; color: #222">';
+            $message .= ' <h2 style="text-align:left; color: #222">';
             // breaks up form
             //
             $camelCase = preg_split('/(?=[A-Z])/', substr($htmlName, 3));
@@ -253,11 +253,11 @@ if (isset($_POST["btnSubmit"])) {
             }
 
             if (is_numeric($value)){
-              $message .= ' = $' . htmlentities(number_format($value,2), ENT_QUOTES, "UTF-8") . '</h2> </section>';
+              $message .= ' = $' . htmlentities(number_format($value,2), ENT_QUOTES, "UTF-8") . '</h2> ';
             }
 
             else{
-              $message .= ' = ' . htmlentities($value, ENT_QUOTES, "UTF-8") . '</h2> </body>';
+              $message .= ' = ' . htmlentities($value, ENT_QUOTES, "UTF-8") . '</h2> </section> </body>';
             }
 
         // mailing information
