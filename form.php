@@ -19,7 +19,7 @@ $path_parts = pathinfo($phpSelf);
     </head>
 
 <?php
-$debug = false;
+$debug = true;
 
 
 $domain = '//';
