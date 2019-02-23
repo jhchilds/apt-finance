@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <?php
 $phpSelf = htmlentities($_SERVER['PHP_SELF'], ENT_QUOTES, "UTF-8");
-
+include('read_data.php');
 // break the url up into an array, then pull out just the filename
 $path_parts = pathinfo($phpSelf);
 ?>
@@ -14,7 +14,6 @@ $path_parts = pathinfo($phpSelf);
         <meta name="description" content="cs142 LAB2 editing CSS of a form" >
         <!-- style sheet link -->
         <link href="css/form.css" type="text/css" rel="stylesheet" />
-
 
     </head>
 
@@ -369,7 +368,8 @@ if (isset($_POST["btnSubmit"])) {
                                placeholder="2000"
                                tabindex="100"
                                type="text"
-                               value="<?php print $rent; ?>"
+                               value="2000"
+                               readonly
                         >
                     </p>
 
@@ -385,7 +385,8 @@ if (isset($_POST["btnSubmit"])) {
                                placeholder="Enter water bill"
                                tabindex="100"
                                type="text"
-                               value="<?php print $water; ?>"
+                               value="<?php print $current_water; ?>"
+                               readonly
                         >
                     </p>
 
@@ -400,12 +401,13 @@ if (isset($_POST["btnSubmit"])) {
                                placeholder="24"
                                tabindex="100"
                                type="text"
-                               value="<?php print $rubbish; ?>"
+                               value="24"
+                               readonly
                         >
                     </p>
 
                     <p>
-                        <label class ="required text-field" for ="txtElectric">Electric</label>
+                        <label class ="required text-field" for ="txtElectric">Electric Each</label>
                             <input
                                 <?php if ($electricERROR) print 'class="mistake"'; ?>
                                 id = "txtElectric"
@@ -415,13 +417,14 @@ if (isset($_POST["btnSubmit"])) {
                                 placeholder= "Enter electric bill"
                                 tabindex = "120"
                                 type = "text"
-                                value = "<?php print $electric; ?>"
+                                value = "<?php print $current_electric; ?>"
+                                readonly
                             >
                     </p>
 
 
                     <p>
-                        <label class ="required text-field" for ="txtAmount">Amount</label>
+                        <label class ="required text-field" for ="txtAmount">Each to Trono</label>
                             <input
                                 <?php if ($amountERROR) print 'class="mistake"'; ?>
                                 id = "txtAmount"
@@ -431,7 +434,8 @@ if (isset($_POST["btnSubmit"])) {
                                 placeholder= "Enter total amount"
                                 tabindex = "120"
                                 type = "text"
-                                value = "<?php print $amount; ?>"
+                                value = "<?php print $current_rrw; ?>"
+                                readonly
                             >
                     </p>
 
@@ -476,6 +480,9 @@ if (isset($_POST["btnSubmit"])) {
                     <input class="button" id = "btnSubmit" name = "btnSubmit" tabindex="900" type = "submit" value = "Submit" >
                 </fieldset>
     </form>
+
+
+
     <?php
     }
     ?>
