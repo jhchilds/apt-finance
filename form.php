@@ -238,7 +238,7 @@ if (isset($_POST["btnSubmit"])) {
     // close file
     fclose($file);
         // create the email message
-        $message = '<h1>'. date("m/d/Y") .' FINANCES:</h1>';
+        $message = '<body style = "background-color: #f3f3f3" ><h1 style="background-color: deeppink;">'. date("m/d/Y") .' FINANCES:</h1>';
 
         foreach ($_POST as $htmlName => $value) {
 
