@@ -12,12 +12,12 @@ print PHP_EOL . '<!--  BEGIN include mail-message -->' . PHP_EOL;
 //      $from must not be empty
 //      $subject must not be empty
 //      $message must not be empty
-//      $message must have a minium number of characters
+//      $message must have a minimum number of characters
 //      $message must be a minimum length (just count the characters and spaces)
 //
-//      $from should be cleand of invalid html before being sent here but needs
+//      $from should be cleaned of invalid html before being sent here but needs
 //            to allow < and >
-//      $message should be cleand of invalid html before being sent here as you
+//      $message should be cleaned of invalid html before being sent here as you
 //            may want to allow html characters
 //
 // function returns a boolean value
