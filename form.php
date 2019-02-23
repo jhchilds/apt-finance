@@ -238,7 +238,7 @@ if (isset($_POST["btnSubmit"])) {
     // close file
     fclose($file);
         // create the email message
-        $message = '<header style="background-color: #222;"></header><body style = "background-color: #f3f3f3; width: 800px; margin: auto;" >
+        $message = '<header style="background-color: #222;"> 28 South Willard Finances</header><body style = "background-color: #f3f3f3; width: 800px; margin: auto;" >
                     <h1 style="background-color: deeppink;text-align: center; padding: .5em; border-radius: 2em;">'
                     . date("m/d/Y") .' FINANCES:</h1>';
 
