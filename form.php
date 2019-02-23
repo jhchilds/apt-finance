@@ -241,8 +241,8 @@ if (isset($_POST["btnSubmit"])) {
         $message = '<body style = "background-color: #f3f3f3;">
                     <header style="background-color: #222; color: #f3f3f3; text-align: center; font-size: 30px; padding: .2em;"> 28 South Willard Finances</header>
                     <article style=" width: 800px; margin: auto;">
-                    <h1 style="background-color: deeppink;text-align: center; padding: .2em; border-radius: 2em;">'
-                    . date("m/d/Y") .' FINANCES:</h1>';
+                    <h1 style="background-color: deeppink;text-align: left; padding: .2em; border-radius: 2em;">'
+                    . date("m/d/Y") .'</h1>';
 
         foreach ($_POST as $htmlName => $value) {
 
