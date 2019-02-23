@@ -49,7 +49,7 @@ function sendMail($to, $cc, $bcc, $from, $subject, $message){
     if (strlen($message)<$MIN_MESSAGE_LENGTH) return false;
 
     /* message */
-    $messageTop  = '<html><head><title>' . $subject . '</title></head><body>';
+    $messageTop  = '<html><head><title>' . $subject . '</title><link rel="stylesheet" href="css/mail.css"></head><body>';
     $mailMessage = $messageTop . $message;
     $headers  = "MIME-Version: 1.0\r\n";
     $headers .= "Content-type: text/html; charset=utf-8\r\n";

@@ -1,0 +1,15 @@
+body{
+    background-color:#f3f3f3;
+}
+
+h1{
+    text-align:left;
+    color: #222;
+    text-decoration:underline;
+    padding-bottom:2em;
+}
+
+h2{
+    text-align:left;
+    color: #222;
+}
