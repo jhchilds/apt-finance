@@ -57,7 +57,7 @@ fclose($file);
 
 
         $current_data = $finances[count($finances)-1];
-        print_r($current_data);
+        
 
 
 
@@ -67,4 +67,4 @@ fclose($file);
 
         $current_rrw = str_replace("$", "",$current_data[7]);
 
-        print "TESTING" . $current_data[0];
+
