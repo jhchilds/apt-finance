@@ -238,7 +238,7 @@ if (isset($_POST["btnSubmit"])) {
     // close file
     fclose($file);
         // create the email message
-        $message = '<body> <h1>'. date("m/d/Y") .' FINANCES:</h1>';
+        $message = '<h1>'. date("m/d/Y") .' FINANCES:</h1>';
 
         foreach ($_POST as $htmlName => $value) {
 
@@ -256,11 +256,15 @@ if (isset($_POST["btnSubmit"])) {
             }
 
             else{
-              $message .= ' = ' . htmlentities($value, ENT_QUOTES, "UTF-8") . '</h2> </body>';
+              $message .= ' = ' . htmlentities($value, ENT_QUOTES, "UTF-8") . '</h2>';
             }
 
         // mailing information
         }
+
+        $message .= '</body>' . '</html>';
+
+
         $to = $email;
         $cc = '';
         $bcc = '';
