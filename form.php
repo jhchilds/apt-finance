@@ -68,8 +68,8 @@ if ($debug) {
 <?php
 
 // initialize variables
-$firstName = "";
-$lastName = "";
+$firstTenant = "";
+$secondTenant = "";
 $email = "";
 
 $rent = "";
@@ -87,8 +87,8 @@ $payStatus2 = "Not Paid";
 $comments = '';
 
 // error variables
-$firstNameERROR = false;
-$lastNameERROR = false;
+$firstTenantERROR = false;
+$secondTenantERROR = false;
 $emailERROR = false;
 
 $rentERROR = false;
@@ -116,8 +116,8 @@ if (isset($_POST["btnSubmit"])) {
         die($msg);
     }
 // create variables to sanitize data
-        $firstName = htmlentities($_POST["txtFirstName"], ENT_QUOTES, "UTF-8");
-        $lastName = htmlentities($_POST["txtLastName"], ENT_QUOTES, "UTF-8");
+        $firstTenant = htmlentities($_POST["txtFirstTenant"], ENT_QUOTES, "UTF-8");
+        $secondTenant = htmlentities($_POST["txtSecondTenant"], ENT_QUOTES, "UTF-8");
         $email = filter_var($_POST["txtEmail"], FILTER_SANITIZE_EMAIL);
 
         $rent = htmlentities($_POST["txtRent"], ENT_QUOTES, "UTF-8");
@@ -133,20 +133,20 @@ if (isset($_POST["btnSubmit"])) {
 
         $comments = htmlentities($_POST["txtComments"], ENT_QUOTES, "UTF-8");
 
-    if ($firstName == "") {
+    if ($firstTenant == "") {
         $errorMsg[] = 'Please enter your first name';
-        $firstNameERROR = true;
-    } elseif (!verifyAlphaNum($firstName)) {
+        $firstTenantERROR = true;
+    } elseif (!verifyAlphaNum($firstTenant)) {
         $errorMsg[] = "Your first name appears to have extra characters.";
-        $firstNameERROR = true;
+        $firstTenantERROR = true;
     }
 
-    if ($lastName == "") {
+    if ($secondTenant == "") {
         $errorMsg[] = 'Please enter your last name';
-        $lastNameERROR = true;
-    } elseif (!verifyAlphaNum($lastName)) {
+        $secondTenantERROR = true;
+    } elseif (!verifyAlphaNum($secondTenant)) {
         $errorMsg[] = "Your last name appears to have extra characters.";
-        $lastNameERROR = true;
+        $secondTenantERROR = true;
     }
 
     if ($email == "") {
@@ -225,8 +225,8 @@ if (isset($_POST["btnSubmit"])) {
     if (!$errorMsg) {
     $dataRecord = array();
     // assign values to array
-    $dataRecord[] = $firstName;
-    $dataRecord[] = $lastName;
+    $dataRecord[] = $firstTenant;
+    $dataRecord[] = $secondTenant;
     $dataRecord[] = $email;
 
     $dataRecord[] = $rent;
@@ -325,34 +325,34 @@ if (isset($_POST["btnSubmit"])) {
             id = "frmRegister"
             method = "post">
                 <fieldset class = "text">
-                    <legend>Tenant Email</legend>
+                    <legend>Tenant Info</legend>
                     <p>
-                        <label class="required text-field" for="txtFirstName">First Name</label>
+                        <label class="required text-field" for="txtFirstTenant">Tenant 1</label>
                         <input autofocus
-                               <?php if ($firstNameERROR) print 'class="mistake"'; ?>
-                               id="txtFirstName"
+                               <?php if ($firstTenantERROR) print 'class="mistake"'; ?>
+                               id="txtFirstTenant"
                                maxlength="45"
-                               name="txtFirstName"
+                               name="txtFirstTenant"
                                onfocus="this.select()"
-                               placeholder="Enter your first name"
+                               placeholder="Enter the first tenant"
                                tabindex="100"
                                type="text"
-                               value="<?php print $firstName; ?>"
+                               value="<?php print $firstTenant; ?>"
                         >
                     </p>
 
                     <p>
-                        <label class="required text-field" for="txtLastName">Last Name</label>
+                        <label class="required text-field" for="txtSecondTenant">Tenant 2</label>
                         <input
-                               <?php if ($lastNameERROR) print 'class="mistake"'; ?>
-                               id="txtLastName"
+                               <?php if ($secondTenantERROR) print 'class="mistake"'; ?>
+                               id="txtSecondTenant"
                                maxlength="45"
-                               name="txtLastName"
+                               name="txtSecondTenant"
                                onfocus="this.select()"
-                               placeholder="Enter your Last name"
+                               placeholder="Enter the second tenant"
                                tabindex="100"
                                type="text"
-                               value="<?php print $lastName; ?>"
+                               value="<?php print $secondTenant; ?>"
                         >
                     </p>
 
