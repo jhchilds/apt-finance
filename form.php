@@ -11,7 +11,7 @@ $path_parts = pathinfo($phpSelf);
         <title>Home Page</title>
         <meta charset="utf-8">
         <meta name="author" content="Joshua Childs">
-        <meta name="description" content="cs142 LAB2 editing CSS of a form" >
+        <meta name="description" content="Form that sends emails with financial data to each tenant who is on a particular lease." >
         <!-- style sheet link -->
         <link href="css/form.css" type="text/css" rel="stylesheet" />
 
@@ -86,6 +86,8 @@ $work = false;
 $learn = false;
 $firstTenantPayStatus = "Not Paid";
 $secondTenantPayStatus = "Not Paid";
+$thirdTenantPayStatus = "Not Paid";
+
 $comments = '';
 
 // error variables
@@ -103,6 +105,8 @@ $amountERROR = false;
 
 $payStatus1ERROR = false;
 $payStatus2ERROR = false;
+$payStatus3ERROR = false;
+
 $commentsERROR = false;
 
 // create array for error messages
@@ -136,8 +140,10 @@ if (isset($_POST["btnSubmit"])) {
 
         $firstTenantPayStatus = htmlentities($_POST["lstFirstTenantPayStatus"], ENT_QUOTES, "UTF-8");
         $secondTenantPayStatus = htmlentities($_POST["lstSecondTenantPayStatus"], ENT_QUOTES, "UTF-8");
+        $thirdTenantPayStatus = htmlentities($_POST["lstThirdTenantPayStatus"], ENT_QUOTES, "UTF-8");
 
-        $comments = htmlentities($_POST["txtComments"], ENT_QUOTES, "UTF-8");
+
+    $comments = htmlentities($_POST["txtComments"], ENT_QUOTES, "UTF-8");
 
     if ($firstTenant == "") {
         $errorMsg[] = 'Please enter the first tenant';
@@ -224,6 +230,11 @@ if (isset($_POST["btnSubmit"])) {
         $payStatus2ERROR = true;
     }
 
+    if ($thirdTenantPayStatus == "") {
+        $errorMsg[] = 'Please choose a status';
+        $payStatus3ERROR = true;
+    }
+
     if ($comments != "") {
      if (!verifyAlphaNum($comments)) {
         $errorMsg[] = 'Your comment appears to have extra characters that are not allowed.';
@@ -251,6 +262,8 @@ if (isset($_POST["btnSubmit"])) {
 
 
     $dataRecord[] = $thirdTenant; //third tenant
+
+    $dataRecord[] = $thirdTenantPayStatus;
 
 
 
@@ -538,6 +551,25 @@ if (isset($_POST["btnSubmit"])) {
                           value="Not Paid">Not Paid</option>
 
                   <option <?php if ($secondTenantPayStatus == "Paid") print " selected "; ?>
+                          value="Paid">Paid</option>
+
+              </select>
+
+
+          </fieldset>
+
+
+
+          <fieldset class="listbox <?php if ($payStatus3ERROR) print ' mistake'; ?>">
+
+              <legend>Tenant 3 Pay Status</legend>
+              <select id="lstThirdTenantPayStatus"
+                      name="lstThirdTenantPayStatus"
+                      tabindex="520" >
+                  <option <?php if ($thirdTenantPayStatus == "Not Paid") print " selected "; ?>
+                          value="Not Paid">Not Paid</option>
+
+                  <option <?php if ($thirdTenantPayStatus == "Paid") print " selected "; ?>
                           value="Paid">Paid</option>
 
               </select>
