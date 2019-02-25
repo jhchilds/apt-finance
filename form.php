@@ -82,7 +82,8 @@ $subscribe = "Subscribe";
 $listen = true;
 $work = false;
 $learn = false;
-$payStatus = "Not Paid";
+$payStatus1 = "Not Paid";
+$payStatus2 = "Not Paid";
 $comments = '';
 
 // error variables
@@ -96,7 +97,8 @@ $rubbishERROR = false;
 $electricERROR = false;
 $amountERROR = false;
 
-$payStatusERROR = false;
+$payStatus1ERROR = false;
+$payStatus2ERROR = false;
 $commentsERROR = false;
 
 // create array for error messages
@@ -126,7 +128,9 @@ if (isset($_POST["btnSubmit"])) {
 
 
 
-        $payStatus = htmlentities($_POST["lstStatus"], ENT_QUOTES, "UTF-8");
+        $payStatus1 = htmlentities($_POST["lstStatus1"], ENT_QUOTES, "UTF-8");
+        $payStatus2 = htmlentities($_POST["lstStatus2"], ENT_QUOTES, "UTF-8");
+
         $comments = htmlentities($_POST["txtComments"], ENT_QUOTES, "UTF-8");
 
     if ($firstName == "") {
@@ -194,9 +198,15 @@ if (isset($_POST["btnSubmit"])) {
     }
 
 
-    if ($payStatus == "") {
-        $errorMsg[] = 'Please choose a staus';
-        $payStatusERROR = true;
+    if ($payStatus1 == "") {
+        $errorMsg[] = 'Please choose a status';
+        $payStatus1ERROR = true;
+    }
+
+
+    if ($payStatus2 == "") {
+        $errorMsg[] = 'Please choose a status';
+        $payStatus2ERROR = true;
     }
 
     if ($comments != "") {
@@ -227,7 +237,9 @@ if (isset($_POST["btnSubmit"])) {
 
 
 
-    $dataRecord[] = $payStatus;
+    $dataRecord[] = $payStatus1;
+    $dataRecord[] = $payStatus2;
+
     $dataRecord[] = $comments;
     // setup csv file
     $filename = 'data/registration.csv';
@@ -355,7 +367,7 @@ if (isset($_POST["btnSubmit"])) {
                                 placeholder= "Enter your email"
                                 tabindex = "120"
                                 type = "text"
-                                value = "<?php print $email; ?>"
+                                value = "jhchilds@uvm.edu"
                             >
                     </p>
                 </fieldset> <!-- ends contact -->
@@ -454,21 +466,39 @@ if (isset($_POST["btnSubmit"])) {
 
 
 <!--                    ======================== list options ======================-->
-                <fieldset class="listbox <?php if ($payStatusERROR) print ' mistake'; ?>">
+                <fieldset class="listbox <?php if ($payStatus1ERROR) print ' mistake'; ?>">
 
-                    <legend>Paid Status</legend>
-                    <select id="lstStatus"
-                            name="lstStatus"
+                    <legend>Tenant 1 Pay Status</legend>
+                    <select id="lstStatus1"
+                            name="lstStatus1"
                             tabindex="520" >
-                        <option <?php if ($payStatus == "Not Paid") print " selected "; ?>
+                        <option <?php if ($payStatus1 == "Not Paid") print " selected "; ?>
                             value="Not Paid">Not Paid</option>
 
-                        <option <?php if ($payStatus == "Paid") print " selected "; ?>
+                        <option <?php if ($payStatus1 == "Paid") print " selected "; ?>
                             value="Paid">Paid</option>
 
                     </select>
 
+
                 </fieldset>
+
+          <fieldset class="listbox <?php if ($payStatus2ERROR) print ' mistake'; ?>">
+
+              <legend>Tenant 2 Pay Status</legend>
+              <select id="lstStatus2"
+                      name="lstStatus2"
+                      tabindex="520" >
+                  <option <?php if ($payStatus2 == "Not Paid") print " selected "; ?>
+                          value="Not Paid">Not Paid</option>
+
+                  <option <?php if ($payStatus2 == "Paid") print " selected "; ?>
+                          value="Paid">Paid</option>
+
+              </select>
+
+
+          </fieldset>
 
 <!--                    ======================== text ======================-->
                 <fieldset class="textarea">
