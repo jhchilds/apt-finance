@@ -308,11 +308,11 @@ if (isset($_POST["btnSubmit"])) {
             }
 
             if (is_numeric($value)){
-              $message .= ' = $' . htmlentities(number_format($value,2), ENT_QUOTES, "UTF-8") . '</h2> ';
+              $message .= ' ............................... $' . htmlentities(number_format($value,2), ENT_QUOTES, "UTF-8") . '</h2> ';
             }
 
             else{
-              $message .= ' = ' . htmlentities($value, ENT_QUOTES, "UTF-8") . '</h2>';
+              $message .= ' ............................... ' . htmlentities($value, ENT_QUOTES, "UTF-8") . '</h2>';
             }
 
         // mailing information
