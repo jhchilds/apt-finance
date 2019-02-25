@@ -128,8 +128,8 @@ if (isset($_POST["btnSubmit"])) {
 
 
 
-        $firstTenantPayStatus = htmlentities($_POST["lstStatus1"], ENT_QUOTES, "UTF-8");
-        $secondTenantPayStatus = htmlentities($_POST["lstStatus2"], ENT_QUOTES, "UTF-8");
+        $firstTenantPayStatus = htmlentities($_POST["lstFirstTenantPayStatus"], ENT_QUOTES, "UTF-8");
+        $secondTenantPayStatus = htmlentities($_POST["lstSecondTenantPayStatus"], ENT_QUOTES, "UTF-8");
 
         $comments = htmlentities($_POST["txtComments"], ENT_QUOTES, "UTF-8");
 
@@ -469,8 +469,8 @@ if (isset($_POST["btnSubmit"])) {
                 <fieldset class="listbox <?php if ($payStatus1ERROR) print ' mistake'; ?>">
 
                     <legend>Tenant 1 Pay Status</legend>
-                    <select id="lstStatus1"
-                            name="lstStatus1"
+                    <select id="lstFirstTenantPayStatus"
+                            name="lstFirstTenantPayStatus"
                             tabindex="520" >
                         <option <?php if ($firstTenantPayStatus == "Not Paid") print " selected "; ?>
                             value="Not Paid">Not Paid</option>
@@ -486,8 +486,8 @@ if (isset($_POST["btnSubmit"])) {
           <fieldset class="listbox <?php if ($payStatus2ERROR) print ' mistake'; ?>">
 
               <legend>Tenant 2 Pay Status</legend>
-              <select id="lstStatus2"
-                      name="lstStatus2"
+              <select id="lstSecondTenantPayStatus"
+                      name="lstSecondTenantPayStatus"
                       tabindex="520" >
                   <option <?php if ($secondTenantPayStatus == "Not Paid") print " selected "; ?>
                           value="Not Paid">Not Paid</option>
