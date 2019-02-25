@@ -70,6 +70,8 @@ if ($debug) {
 // initialize variables
 $firstTenant = "";
 $secondTenant = "";
+$thirdTenant = "";
+
 $email = "";
 
 $rent = "";
@@ -89,6 +91,8 @@ $comments = '';
 // error variables
 $firstTenantERROR = false;
 $secondTenantERROR = false;
+$thirdTenantERROR = false;
+
 $emailERROR = false;
 
 $rentERROR = false;
@@ -118,7 +122,9 @@ if (isset($_POST["btnSubmit"])) {
 // create variables to sanitize data
         $firstTenant = htmlentities($_POST["txtFirstTenant"], ENT_QUOTES, "UTF-8");
         $secondTenant = htmlentities($_POST["txtSecondTenant"], ENT_QUOTES, "UTF-8");
-        $email = filter_var($_POST["txtEmail"], FILTER_SANITIZE_EMAIL);
+    $secondTenant = htmlentities($_POST["txtThirdTenant"], ENT_QUOTES, "UTF-8");
+
+    $email = filter_var($_POST["txtEmail"], FILTER_SANITIZE_EMAIL);
 
         $rent = htmlentities($_POST["txtRent"], ENT_QUOTES, "UTF-8");
         $water = htmlentities($_POST["txtWater"], ENT_QUOTES, "UTF-8");
@@ -134,19 +140,28 @@ if (isset($_POST["btnSubmit"])) {
         $comments = htmlentities($_POST["txtComments"], ENT_QUOTES, "UTF-8");
 
     if ($firstTenant == "") {
-        $errorMsg[] = 'Please enter your first name';
+        $errorMsg[] = 'Please enter the first tenant';
         $firstTenantERROR = true;
     } elseif (!verifyAlphaNum($firstTenant)) {
-        $errorMsg[] = "Your first name appears to have extra characters.";
+        $errorMsg[] = "The first tenant appears to have extra characters.";
         $firstTenantERROR = true;
     }
 
     if ($secondTenant == "") {
-        $errorMsg[] = 'Please enter your last name';
+        $errorMsg[] = 'Please enter the second tenant';
         $secondTenantERROR = true;
     } elseif (!verifyAlphaNum($secondTenant)) {
-        $errorMsg[] = "Your last name appears to have extra characters.";
+        $errorMsg[] = "The second tenant appears to have extra characters.";
         $secondTenantERROR = true;
+    }
+
+
+    if ($thirdTenant == "") {
+        $errorMsg[] = 'Please enter the third tenant';
+        $thirdTenantERROR = true;
+    } elseif (!verifyAlphaNum($thirdTenant)) {
+        $errorMsg[] = "The third tenant appears to have extra characters.";
+        $thirdTenantERROR = true;
     }
 
     if ($email == "") {
@@ -225,8 +240,21 @@ if (isset($_POST["btnSubmit"])) {
     if (!$errorMsg) {
     $dataRecord = array();
     // assign values to array
-    $dataRecord[] = $firstTenant;
-    $dataRecord[] = $secondTenant;
+    $dataRecord[] = $firstTenant; //first tenant
+
+    $dataRecord[] = $firstTenantPayStatus;
+
+    $dataRecord[] = $secondTenant; // second tenant
+
+
+    $dataRecord[] = $secondTenantPayStatus;
+
+
+    $dataRecord[] = $thirdTenant; //third tenant
+
+
+
+
     $dataRecord[] = $email;
 
     $dataRecord[] = $rent;
@@ -237,8 +265,7 @@ if (isset($_POST["btnSubmit"])) {
 
 
 
-    $dataRecord[] = $firstTenantPayStatus;
-    $dataRecord[] = $secondTenantPayStatus;
+
 
     $dataRecord[] = $comments;
     // setup csv file
@@ -353,6 +380,24 @@ if (isset($_POST["btnSubmit"])) {
                                tabindex="100"
                                type="text"
                                value="<?php print $secondTenant; ?>"
+                        >
+                    </p>
+
+
+
+
+                    <p>
+                        <label class="required text-field" for="txtThirdTenant">Tenant 3</label>
+                        <input
+                            <?php if ($thirdTenantERROR) print 'class="mistake"'; ?>
+                                id="txtThirdTenant"
+                                maxlength="45"
+                                name="txtThirdTenant"
+                                onfocus="this.select()"
+                                placeholder="Enter the third tenant"
+                                tabindex="100"
+                                type="text"
+                                value="<?php print $thirdTenant; ?>"
                         >
                     </p>
 
@@ -528,4 +573,3 @@ if (isset($_POST["btnSubmit"])) {
 
   </body>
   </html>
-
