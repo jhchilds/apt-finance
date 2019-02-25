@@ -82,8 +82,8 @@ $subscribe = "Subscribe";
 $listen = true;
 $work = false;
 $learn = false;
-$payStatus1 = "Not Paid";
-$payStatus2 = "Not Paid";
+$firstTenantPayStatus = "Not Paid";
+$secondTenantPayStatus = "Not Paid";
 $comments = '';
 
 // error variables
@@ -128,8 +128,8 @@ if (isset($_POST["btnSubmit"])) {
 
 
 
-        $payStatus1 = htmlentities($_POST["lstStatus1"], ENT_QUOTES, "UTF-8");
-        $payStatus2 = htmlentities($_POST["lstStatus2"], ENT_QUOTES, "UTF-8");
+        $firstTenantPayStatus = htmlentities($_POST["lstStatus1"], ENT_QUOTES, "UTF-8");
+        $secondTenantPayStatus = htmlentities($_POST["lstStatus2"], ENT_QUOTES, "UTF-8");
 
         $comments = htmlentities($_POST["txtComments"], ENT_QUOTES, "UTF-8");
 
@@ -198,13 +198,13 @@ if (isset($_POST["btnSubmit"])) {
     }
 
 
-    if ($payStatus1 == "") {
+    if ($firstTenantPayStatus == "") {
         $errorMsg[] = 'Please choose a status';
         $payStatus1ERROR = true;
     }
 
 
-    if ($payStatus2 == "") {
+    if ($secondTenantPayStatus == "") {
         $errorMsg[] = 'Please choose a status';
         $payStatus2ERROR = true;
     }
@@ -237,8 +237,8 @@ if (isset($_POST["btnSubmit"])) {
 
 
 
-    $dataRecord[] = $payStatus1;
-    $dataRecord[] = $payStatus2;
+    $dataRecord[] = $firstTenantPayStatus;
+    $dataRecord[] = $secondTenantPayStatus;
 
     $dataRecord[] = $comments;
     // setup csv file
@@ -472,10 +472,10 @@ if (isset($_POST["btnSubmit"])) {
                     <select id="lstStatus1"
                             name="lstStatus1"
                             tabindex="520" >
-                        <option <?php if ($payStatus1 == "Not Paid") print " selected "; ?>
+                        <option <?php if ($firstTenantPayStatus == "Not Paid") print " selected "; ?>
                             value="Not Paid">Not Paid</option>
 
-                        <option <?php if ($payStatus1 == "Paid") print " selected "; ?>
+                        <option <?php if ($firstTenantPayStatus == "Paid") print " selected "; ?>
                             value="Paid">Paid</option>
 
                     </select>
@@ -489,10 +489,10 @@ if (isset($_POST["btnSubmit"])) {
               <select id="lstStatus2"
                       name="lstStatus2"
                       tabindex="520" >
-                  <option <?php if ($payStatus2 == "Not Paid") print " selected "; ?>
+                  <option <?php if ($secondTenantPayStatus == "Not Paid") print " selected "; ?>
                           value="Not Paid">Not Paid</option>
 
-                  <option <?php if ($payStatus2 == "Paid") print " selected "; ?>
+                  <option <?php if ($secondTenantPayStatus == "Paid") print " selected "; ?>
                           value="Paid">Paid</option>
 
               </select>
