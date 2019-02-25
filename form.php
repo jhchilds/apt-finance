@@ -122,7 +122,7 @@ if (isset($_POST["btnSubmit"])) {
 // create variables to sanitize data
         $firstTenant = htmlentities($_POST["txtFirstTenant"], ENT_QUOTES, "UTF-8");
         $secondTenant = htmlentities($_POST["txtSecondTenant"], ENT_QUOTES, "UTF-8");
-    $secondTenant = htmlentities($_POST["txtThirdTenant"], ENT_QUOTES, "UTF-8");
+        $thirdTenant = htmlentities($_POST["txtThirdTenant"], ENT_QUOTES, "UTF-8");
 
     $email = filter_var($_POST["txtEmail"], FILTER_SANITIZE_EMAIL);
 
