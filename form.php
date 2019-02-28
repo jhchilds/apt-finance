@@ -321,9 +321,12 @@ if (isset($_POST["btnSubmit"])) {
         $message .= '</article></body>' . '</html>';
 
 
+        $tenant2 = 'davidpeterson31@gmail.com'
+        $tenant3 = 'njschult@uvm.edu'
+
         $to = $email;
-        $cc = 'childsj98@gmail.com';
-        $bcc = 'bikealot98@me.com';
+        $cc = $tenant2;
+        $bcc = $tenant3;
 
         $from = 'Childs Finance <jhchilds@uvm.edu>';
 
@@ -346,6 +349,9 @@ if (isset($_POST["btnSubmit"])) {
         }
         print 'been sent:</p>';
         print '<p>To: ' . $email . '</p>';
+        print '<p>' . $tenant2 . '</p>'
+        print '<p>' . $tenant3 . '</p>'
+
         print $message;
     } else {
 
