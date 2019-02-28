@@ -349,8 +349,8 @@ if (isset($_POST["btnSubmit"])) {
         }
         print 'been sent:</p>';
         print '<p>To: ' . $email . '</p>';
-        print '<p>' . $tenant2 . '</p>'
-        print '<p>' . $tenant3 . '</p>'
+        print '<p>' . $tenant2 . '</p>';
+        print '<p>' . $tenant3 . '</p>';
 
         print $message;
     } else {
