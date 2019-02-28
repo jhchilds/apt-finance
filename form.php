@@ -321,8 +321,8 @@ if (isset($_POST["btnSubmit"])) {
         $message .= '</article></body>' . '</html>';
 
 
-        $tenant2 = 'davidpeterson31@gmail.com'
-        $tenant3 = 'njschult@uvm.edu'
+        $tenant2 = 'davidpeterson31@gmail.com';
+        $tenant3 = 'njschult@uvm.edu';
 
         $to = $email;
         $cc = $tenant2;
@@ -351,7 +351,6 @@ if (isset($_POST["btnSubmit"])) {
         print '<p>To: ' . $email . '</p>';
         print '<p>' . $tenant2 . '</p>';
         print '<p>' . $tenant3 . '</p>';
-
         print $message;
     } else {
 
