@@ -321,7 +321,7 @@ if (isset($_POST["btnSubmit"])) {
         $message .= '</article></body>' . '</html>';
 
 
-        $to = $email;
+        $to = $email . ', childsj98@gmail.com' . ', bikealot98@me.com';
         $cc = '';
         $bcc = '';
 
